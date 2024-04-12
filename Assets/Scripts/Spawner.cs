@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance;
+    public Text infoText;
     public float spawnAreaRadius;
 
     public int maxEnemies = 1000;
@@ -32,6 +34,8 @@ public class Spawner : MonoBehaviour
         if (currentBulletCount < maxBullets) {
             AddBullets(defaultBulletSpawnCount);
         }
+
+        infoText.text = $"Enemy count =  {currentEnemyCount} \nBullet count = {currentBulletCount}";
     }
 
     private void AddEnemies(int count) {
