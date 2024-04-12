@@ -20,11 +20,6 @@ public class Spawner : MonoBehaviour
     private void Awake() {
         Instance = this;
     }
-
-    private void Start() {
-        BulletBehavior.count = 0;
-        EnemyBehavior.count = 0;
-    }
    
     private void Update() {
 

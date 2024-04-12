@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public static int count;
     public bool toDestroy;
 
     private Vector3 direction;
@@ -10,7 +9,6 @@ public class EnemyBehavior : MonoBehaviour
     private float speed = 10f;
 
     private void Start() {
-        count++;
         pos = transform.position;
         direction = -pos.normalized; // go towards center (0,0,0)
     }
@@ -37,9 +35,5 @@ public class EnemyBehavior : MonoBehaviour
         toDestroy = true;
         Spawner.Instance.currentEnemyCount--;
         Destroy(this.gameObject);
-    }
-
-    private void OnDestroy() {
-        count--;
     }
 }

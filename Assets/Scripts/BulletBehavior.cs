@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
-    public static int count;
-
     public bool toDestroy;
 
     private Vector3 direction;
@@ -11,7 +9,6 @@ public class BulletBehavior : MonoBehaviour
     private Vector3 pos;
 
     void Start() {
-        count++;
         direction = Random.insideUnitCircle.normalized;
         pos = transform.position;
     }
@@ -33,9 +30,5 @@ public class BulletBehavior : MonoBehaviour
         toDestroy = true;
         Spawner.Instance.currentBulletCount--;
         Destroy(this.gameObject);
-    }
-
-    private void OnDestroy() {
-        count--;
     }
 }
