@@ -1,10 +1,9 @@
-
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
     public static int count;
-    public bool toDestroy { get; private set; }
+    public bool toDestroy;
 
     private Vector3 direction;
     private Vector3 pos;
@@ -12,9 +11,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start() {
         count++;
-        // go towards center (0,0,0)
         pos = transform.position;
-        direction = -pos.normalized;
+        direction = -pos.normalized; // go towards center (0,0,0)
     }
 
     void Update() {

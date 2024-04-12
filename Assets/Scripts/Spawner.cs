@@ -1,11 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance;
-
-    public Vector2 spawnAreaSize;
     public float spawnAreaRadius;
 
     public int maxEnemies = 1000;
@@ -18,8 +15,6 @@ public class Spawner : MonoBehaviour
     public int currentEnemyCount;
     public int currentBulletCount;
 
-    private float debugLogInterval = 1f;
-
     private void Awake() {
         Instance = this;
     }
@@ -27,24 +22,14 @@ public class Spawner : MonoBehaviour
     private void Start() {
         BulletBehavior.count = 0;
         EnemyBehavior.count = 0;
-        //StartCoroutine(CallMethodRepeatedly());
     }
-
-    IEnumerator CallMethodRepeatedly() {
-        while (true) {
-            Debug.Log($"bullets:{BulletBehavior.count}, enemies:{EnemyBehavior.count}");
-            yield return new WaitForSeconds(debugLogInterval);
-        }
-    }
-    
+   
     private void Update() {
 
         if (currentEnemyCount < maxEnemies) {
-            //int count = Mathf.Min(defaultEnemySpawnCount, maxEnemies - currentEnemyCount);
             AddEnemies(defaultEnemySpawnCount);
         }
         if (currentBulletCount < maxBullets) {
-            //int count = Mathf.Min(defaultBulletSpawnCount, maxBullets - currentBulletCount);
             AddBullets(defaultBulletSpawnCount);
         }
     }

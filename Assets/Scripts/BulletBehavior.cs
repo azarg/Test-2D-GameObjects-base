@@ -4,7 +4,7 @@ public class BulletBehavior : MonoBehaviour
 {
     public static int count;
 
-    public bool toDestroy { get; private set; }
+    public bool toDestroy;
 
     private Vector3 direction;
     private float speed = 30f;
