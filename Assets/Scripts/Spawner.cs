@@ -17,10 +17,16 @@ public class Spawner : MonoBehaviour
     public int currentEnemyCount;
     public int currentBulletCount;
 
+    public int enemiesLayerMask;
+
     private void Awake() {
         Instance = this;
     }
-   
+
+    private void Start() {
+        enemiesLayerMask = LayerMask.GetMask("Enemies");
+    }
+
     private void Update() {
 
         if (currentEnemyCount < maxEnemies) {

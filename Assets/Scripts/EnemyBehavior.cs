@@ -17,17 +17,11 @@ public class EnemyBehavior : MonoBehaviour
         if (toDestroy) return;
 
         pos += speed * Time.deltaTime * direction;
-        transform.position = pos;
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (toDestroy) return;
-
-        if (other.gameObject.TryGetComponent(out BulletBehavior bullet)) {
-            if (bullet.toDestroy) return;
-            MarkToDestroy();
-            bullet.MarkToDestroy();
+        if (pos.magnitude > Spawner.Instance.spawnAreaRadius) {
+            pos = direction * Spawner.Instance.spawnAreaRadius;
+            direction = -direction;
         }
+        transform.position = pos;
     }
 
     public void MarkToDestroy() {
